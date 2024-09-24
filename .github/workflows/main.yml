@@ -19,8 +19,8 @@ jobs:
       with:
         aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        application_name: github-actionsdemo
-        environment_name: Github-actionsdemo-env
+        application_name: arc
+        environment_name: Arc-env
         version_label: 12345
         region: ap-south-1
         deployment_package: deploy.zip
