@@ -33,8 +33,10 @@ jobs:
           application_name: github-actionsdemo
           environment_name: Github-actionsdemo-env
           version_label: ${{ github.sha }}
-          region: ap-south-1  # Change to the correct region
+          region: ap-south-1
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           deployment_package: my-fastapi-app.zip
           existing_bucket_name: asgdemo
+          use_existing_version_if_available: true
+
