@@ -1,42 +1,26 @@
-name: Deploy to Elastic Beanstalk
-
+name: Deploy master
 on:
   push:
-    branches:
-      - main  # Change to your main branch if differe
+    branches: [ main ]
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.9'
+    - name: Checkout source code
+      uses: actions/checkout@v2
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+    - name: Generate deployment package
+      run: zip -r deploy.zip . -x '*.git*'
 
-      - name: Package application
-        run: |
-          zip -r my-fastapi-app.zip .  # Adjust the command as needed
-
-      - name: Deploy to Elastic Beanstalk
-        uses: einaregilsson/beanstalk-deploy@v20
-        with:
-          application_name: github-actionsdemo
-          environment_name: Github-actionsdemo-env
-          version_label: ${{ github.sha }}
-          region: ap-south-1
-          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          deployment_package: my-fastapi-app.zip
-          existing_bucket_name: asgdemo
-          use_existing_version_if_available: true
-
+    - name: Deploy to EB
+      uses: einaregilsson/beanstalk-deploy@v22
+      with:
+        aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        application_name: github-actionsdemo
+        environment_name: Github-actionsdemo-env
+        version_label: 12345
+        region: us-west-2
+        deployment_package: deploy.zip
