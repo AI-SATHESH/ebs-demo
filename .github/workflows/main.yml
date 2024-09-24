@@ -35,7 +35,7 @@ jobs:
           version_label: ${{ github.sha }}
           region: ap-south-1
           bucket_name: githubactionsdemo123
-          bucket_key: my-fastapi-app.zip
+          
           access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
