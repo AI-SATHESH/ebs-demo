@@ -12,3 +12,7 @@ async def root():
 @app.get("/test")
 async def test():
     return {"OK":True}
+
+@app.get("/health")
+async def h():
+    return {"status":"ok"}
