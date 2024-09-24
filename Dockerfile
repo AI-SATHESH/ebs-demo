@@ -1,7 +1,7 @@
 # Use a base image with Python 3.9
 FROM tiangolo/uvicorn-gunicorn-fastapi:python3.9
 
-# Set the working directory
+# Set the working director
 WORKDIR /app
 
 # Upgrade pip to the latest version
