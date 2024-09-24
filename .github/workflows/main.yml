@@ -30,12 +30,12 @@ jobs:
       - name: Deploy to Elastic Beanstalk
         uses: einaregilsson/beanstalk-deploy@v20
         with:
-          application_name: <your-application-name>
-          environment_name: <your-environment-name>
+          application_name: github-actionsdemo
+          environment_name: Github-actionsdemo-env
           version_label: ${{ github.sha }}
-          region: <your-region>
-          bucket_name: <your-s3-bucket-name>
+          region: ap-south-1
+          bucket_name: githubactionsdemo123
           bucket_key: my-fastapi-app.zip
-          access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          access_key_id: ${{ secrets.AKIAWPPO6VIHL3ULIGZN }}
+          secret_access_key: ${{ secrets.MjmlW+4eqXUPARisvF5JxGCQ5UtBTx/CY9lsn19p }}
 
