@@ -34,8 +34,9 @@ jobs:
           environment_name: Github-actionsdemo-env
           version_label: ${{ github.sha }}
           region: ap-south-1
-          bucket_name: githubactionsdemo123
-          
-          access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          deployment_package: my-fastapi-app.zip
+          existing_bucket_name: githubactionsdemo123
+
 
